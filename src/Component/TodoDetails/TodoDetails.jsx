@@ -1,5 +1,5 @@
-import React from "react";
-import { useLoaderData, useNavigate, useParams } from "react-router";
+import React, { useState } from "react";
+import { Navigate, useLoaderData, useNavigate } from "react-router";
 
 const TodoDetails = () => {
   const todoDetails = useLoaderData();
@@ -7,15 +7,25 @@ const TodoDetails = () => {
   const handleNavigate = () => {
     navigate("/Todos");
   };
-  const { todoId } = useParams();
-  console.log(todoId);
+  const [isVisitHome, setIsVisitHome] = useState(false);
+  if (isVisitHome) {
+    return <Navigate to={"/"}></Navigate>;
+  }
   return (
     <div className="flex text-pink-800 flex-col justify-center gap-y-3 items-center p-10 rounded-2xl border-2 border-pink-300 bg-pink-100 m-20">
       <p className="font-semibold text-pink-700">Todo's Title</p>
       {todoDetails.title.toUpperCase()}
-      <div className="flex justify-center items-center w-full">
+      <div className="flex justify-center items-center w-full  flex-row gap-x-3">
         <button onClick={handleNavigate} className="btn btn-accent">
           Go to Todos Home section
+        </button>
+        <button
+          onClick={() => {
+            setIsVisitHome(true);
+          }}
+          className="btn btn-dash"
+        >
+          Visit Home
         </button>
       </div>
     </div>
