@@ -1,10 +1,12 @@
 import React from "react";
-import { Outlet } from "react-router";
+import { Outlet, useNavigation } from "react-router";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Sidebar from "../Sidebar/Sidebar";
 
 const Root = () => {
+  const navigate = useNavigation();
+  const isNavigating = Boolean(navigate.location);
   return (
     <div>
       <Header></Header>
@@ -12,6 +14,9 @@ const Root = () => {
         <aside>
           <Sidebar></Sidebar>
         </aside>
+        <div className="flex justify-center items-center py-4 text-2xl text-green-700 font-semibold mb-4">
+          {isNavigating && <p>Loading...</p>}
+        </div>
         <Outlet></Outlet>
       </div>
       <Footer></Footer>
