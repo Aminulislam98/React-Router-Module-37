@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData, useNavigate } from "react-router";
+import { useLoaderData, useNavigate, useParams } from "react-router";
 
 const TodoDetails = () => {
   const todoDetails = useLoaderData();
@@ -7,6 +7,8 @@ const TodoDetails = () => {
   const handleNavigate = () => {
     navigate("/Todos");
   };
+  const { todoId } = useParams();
+  console.log(todoId);
   return (
     <div className="flex text-pink-800 flex-col justify-center gap-y-3 items-center p-10 rounded-2xl border-2 border-pink-300 bg-pink-100 m-20">
       <p className="font-semibold text-pink-700">Todo's Title</p>

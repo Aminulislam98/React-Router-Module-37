@@ -63,6 +63,14 @@ const router = createBrowserRouter([
           fetch(`https://jsonplaceholder.typicode.com/todos/${params.todoId}`),
         Component: TodoDetails,
       },
+      {
+        path: "*",
+        element: (
+          <div className="flex justify-center items-center py-50 border-2 border-red-300 bg-red-100 mx-10 rounded-2xl">
+            <h1 className="text-red-600 font-bold text-4xl">NOT FOUND 404</h1>
+          </div>
+        ),
+      },
     ],
   },
 ]);
