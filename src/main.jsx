@@ -11,6 +11,7 @@ import Laptops from "./Component/Laptops/Laptops.jsx";
 import Products from "./Component/Products/Products.jsx";
 import Users from "./Component/Users/Users.jsx";
 import Users2 from "./Component/Users2/Users2.jsx";
+import UserDetails from "./Component/UserDetails/UserDetails.jsx";
 const response = async () => {
   const userResponse = await fetch(
     "https://jsonplaceholder.typicode.com/users",
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
             ></Users2>
           </Suspense>
         ),
+      },
+      {
+        path: "Users/:userId",
+        Component: UserDetails,
       },
     ],
   },
