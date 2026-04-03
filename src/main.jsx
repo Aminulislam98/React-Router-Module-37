@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
@@ -10,6 +10,16 @@ import Mobile from "./Component/Mobiles/Mobile.jsx";
 import Laptops from "./Component/Laptops/Laptops.jsx";
 import Products from "./Component/Products/Products.jsx";
 import Users from "./Component/Users/Users.jsx";
+import Users2 from "./Component/Users2/Users2.jsx";
+const response = async () => {
+  const userResponse = await fetch(
+    "https://jsonplaceholder.typicode.com/users",
+  );
+  return userResponse.json();
+};
+
+const userRes = response();
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,6 +33,17 @@ const router = createBrowserRouter([
         path: "Users",
         loader: () => fetch("https://jsonplaceholder.typicode.com/users"),
         Component: Users,
+      },
+      {
+        path: "Users2",
+        element: (
+          <Suspense>
+            <Users2
+              callback={<small>Loading...</small>}
+              userRes={userRes}
+            ></Users2>
+          </Suspense>
+        ),
       },
     ],
   },
