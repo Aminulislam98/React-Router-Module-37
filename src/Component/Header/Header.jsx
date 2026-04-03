@@ -4,11 +4,8 @@ import "../../../src/App.css";
 
 const Header = () => {
   return (
-    <div>
-      <div>
-        <button className="btn text-black">Logo</button>
-      </div>
-      <nav className="flex flex-row justify-between p-10 items-center gap-3">
+    <div className="sticky top-0 z-50 mb-5">
+      <nav className="flex flex-row justify-between px-10 py-5 items-center gap-3  bg-blue-300 shadow-md text-blue-800 text-base font-semibold">
         <NavLink to={"/Laptops"}>Laptop</NavLink>
         <NavLink to={"/Mobiles"}>Mobiles</NavLink>
         <NavLink to={"/Products"}>Products</NavLink>
