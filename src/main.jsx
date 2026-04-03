@@ -12,6 +12,8 @@ import Products from "./Component/Products/Products.jsx";
 import Users from "./Component/Users/Users.jsx";
 import Users2 from "./Component/Users2/Users2.jsx";
 import UserDetails from "./Component/UserDetails/UserDetails.jsx";
+import Todos from "./Component/Todos/Todos.jsx";
+import TodoDetails from "./Component/TodoDetails/TodoDetails.jsx";
 const response = async () => {
   const userResponse = await fetch(
     "https://jsonplaceholder.typicode.com/users",
@@ -48,6 +50,18 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`),
         Component: UserDetails,
+      },
+      {
+        path: "Todos",
+        loader: () => fetch("https://jsonplaceholder.typicode.com/todos"),
+        Component: Todos,
+      },
+      {
+        path: "Todos/:todoId",
+
+        loader: ({ params }) =>
+          fetch(`https://jsonplaceholder.typicode.com/todos/${params.todoId}`),
+        Component: TodoDetails,
       },
     ],
   },
